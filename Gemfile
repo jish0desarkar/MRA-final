@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'barista'
 gem 'devise'
 gem 'slim-rails'
+gem 'select2-rails'
