@@ -1,0 +1,33 @@
+
+
+/ - if current_user.admin == false
+/   p Non admin users cannot create rooms
+
+/ - if current_user.admin == true
+/     p Admin logged in
+
+
+table.table.table-striped.table-secondary.table-borderedless.table-hover.table-allmeeting
+  thead
+    tr
+      th.radius Name
+      th Capacity
+      th Meeting
+      th
+      th
+      th
+
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = room.name
+        td = room.capacity
+        td 
+          - room.meetings.each do |r|
+             = r.name
+             br
+        td = link_to 'Show', room,:class => 'text-white text-decoration-none btn btn-dark'
+        td = link_to 'Edit', edit_room_path(room),:class => 'text-white text-decoration-none btn btn-dark'
+        td = link_to 'Destroy', room, data: { confirm: 'Are you sure?' }, method: :delete,:class => 'text-white text-decoration-none btn btn-dark'
+
+br

@@ -1,0 +1,69 @@
+
+<div class = 'centered'>
+<div class="card text-white bg-dark mb-3 bg-shadow" style="min-width: 40rem;">
+  <div class="card-header">Create Meeting</div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <div class="card-text">
+     = form_for @meeting do |f|
+      - if @meeting.errors.any?
+         #error_explanation
+          h5 = "#{pluralize(@meeting.errors.count, "error")} prohibited this meeting from being saved:"
+          ul
+         - @meeting.errors.full_messages.each do |message|
+           li = message
+         
+      <div class = 'form-group'>
+         .field
+           = f.label :name
+           = f.text_field :name, :class => 'form-control'
+      </div>
+          
+      <div class = 'form-group dropdown'>
+      .field
+        = f.label :date
+        br
+        = f.date_select :date, :class => 'dropdown-item'
+      </div>
+       <div class = 'form-group'>
+       .field
+         = f.label :start_time
+         br
+         = f.time_select :s_time, {:minute_step => 15, :ampm => true}
+       </div>
+       
+       <div class = 'form-group'>
+
+        .field
+          = f.label :end_time
+          br
+          = f.time_select :e_time, {:minute_step => 15, :ampm => true}
+       </div>
+        / .field
+        / = f.label :attending
+        / = f.number_field :attending, @rooms
+      / .field
+      /   = f.label :user
+      /   = f.text_field :user_id, value:current_user.id
+      <div class = 'form-group'>
+       .field
+         = f.label :event_email 
+         br        
+         = f.select(:user_ids, User.where.not(email: current_user.email).map {|user| [user.email, user.id]}, {}, id: "event_user_ids", :multiple => true, :class => 'js-selectable form-control')
+         / = f.text_field :event_email, :id => 'js-selectable'
+      </div>
+      .field
+        = f.label :room_id
+        br
+        = f.collection_select :room_id, Room.order(:name), :id,:name, :class => 'form-control'
+        br
+        br
+        br
+      .actions 
+      = f.submit :class => 'btn btn-secondary'
+      </div>
+    </div>
+  </div>
+</div>
+
+

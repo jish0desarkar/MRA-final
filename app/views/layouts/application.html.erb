@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MRA</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src = 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script> 
+
+
+  
+  </head>
+       
+  <body class = 'bg-secondary'>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">MRA</a>
+  
+  <br>
+  <br>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <%= link_to  "Home",meetings_path, :class =>  'nav-link' %>
+      </li>
+      <% if current_user != nil %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Meetings
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to  "Create Meeting",new_meeting_path, :class => 'dropdown-item' %>
+          <%= link_to  "See Your Meetings",meetings_path, :class => 'dropdown-item' %>
+
+          <% if current_user.admin == true%>
+            <%= link_to  "All meetings", all_meetings_path, :class => 'dropdown-item' %>
+            <%= link_to  "All users and their meetings", users_path, :class => 'dropdown-item' %>
+          <%end%>
+        </div>
+      </li>
+      <%end%>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Options
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <% if current_user == nil %>
+          <%= link_to  "Sign Up", new_user_registration_path, :class => 'dropdown-item' %>
+          <%= link_to  "Sign In", new_user_session_path, :class => 'dropdown-item' %>
+        <%else%>
+          <%= link_to  "Sign Out", destroy_user_session_path, method: :delete, :class => 'dropdown-item' %>
+          <%= link_to  "Edit Account", edit_user_registration_path, :class => 'dropdown-item' %>
+
+        <%end%>
+       </div>
+      </li>
+      <% if current_user != nil && current_user.admin == true %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Rooms
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          
+          
+           <%= link_to  "Rooms",rooms_path, :class => 'dropdown-item' %>
+           <%= link_to  "Create Rooms",new_room_path, :class => 'dropdown-item' %> 
+          
+       </div>
+      </li>
+      <%end%>
+      </ul>
+      <% if user_signed_in? %> 
+        <a class= "text-muted text-decoration-none" href=""><%= formatted_email(current_user.email)%> Logged in </a>
+        <a class= "text-muted text-decoration-none" href=""><%if current_user.admin == true %>(admin) <%end%></a>
+      <%end%>
+
+  </div>
+</nav>
+    
+ <% if notice != nil %>
+          <p class="alert alert-success"><%= notice %></p>
+        <%end%>
+        <% if alert != nil %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <%end%>
+    <%= yield %>
+  </body>
+</html>

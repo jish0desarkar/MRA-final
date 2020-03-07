@@ -1,0 +1,32 @@
+
+table.table.table-striped.table-secondary.table-borderedless.table-hover.table-allmeeting
+  thead
+    tr
+      th Name
+      th Date
+      th S time
+      th E time
+      th Participants
+      th Room 
+      th 
+      th
+      th
+
+  tbody
+    - @meetings.each do |meeting|
+      tr
+        td = meeting.name
+        td = formatted_date(meeting.date)
+        td = formatted_time(meeting.s_time)
+        td = formatted_time(meeting.e_time)
+        td 
+          - meeting.users.each do |m|
+            = formatted_email(m.email)
+            br
+        td = meeting.room.name
+        td = link_to 'Show', meeting, :class => 'btn btn-dark'
+        td = link_to 'Edit', edit_meeting_path(meeting), :class => 'btn btn-dark'
+        td = link_to 'Destroy', meeting, data: { confirm: 'Are you sure?' }, method: :delete, :class => 'btn btn-dark'
+        
+
+

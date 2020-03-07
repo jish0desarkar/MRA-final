@@ -1,0 +1,19 @@
+
+table.table.table-striped.table-secondary.table-borderedless.table-hover.table-allmeeting
+  thead
+    tr
+      th Name
+      th Meetings
+     
+  tbody
+    - @users.each do |u|
+      tr
+        td = formatted_email(u.email)
+
+        td
+          -u.meetings.each do |m|
+            =m.name
+            br
+       
+
+

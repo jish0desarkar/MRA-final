@@ -1,0 +1,22 @@
+
+<div class = "centered centered-show-meeting">
+<div class="card text-white bg-dark pd-40" style="max-width: 40rem;">
+  <div class="text-large">Room Details</div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <div class="card-text">
+p
+  strong Name:
+  br
+  = @room.name
+p
+  strong Capacity:
+  br
+  = @room.capacity
+/ p
+/   strong Meeting:
+/   = @room.meetings
+
+=> link_to 'Edit', edit_room_path(@room), :class => 'btn btn-secondary'
+'|
+=< link_to 'Back', rooms_path, :class => 'btn btn-secondary'

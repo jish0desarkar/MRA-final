@@ -1,0 +1,75 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ 
+ body{
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+
+ .centered-login{
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     margin-top: 70px;
+
+ }
+
+ .wd-70{
+     width: 70%;
+ }
+ 
+ .bg-shadow-login{
+    -webkit-box-shadow: 2px 15px 84px -27px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 15px 84px -27px rgba(0,0,0,1);
+    box-shadow: 2px 15px 84px -27px rgba(0,0,0,1);
+
+    border-radius: 14px;
+ }
+
+ .bg-shadow{
+    -webkit-box-shadow: 2px 15px 84px -27px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 15px 84px -27px rgba(0,0,0,1);
+    box-shadow: 2px 15px 84px -27px rgba(0,0,0,1);
+
+    border-radius: 14px;
+ }
+
+ .table-allmeeting{
+     margin-top: 50px;
+     text-align: center;
+     width: 80%;
+     margin: 50px auto;
+     border-radius: 10px;
+     
+ }
+
+.radius{
+    border-radius: 20px;
+}
+.text-md {
+    font-size: 13px;
+    padding: 3px;
+    color: azure;
+}
+
+.mr-50{
+    margin-left: 150px;
+}
+
+.nav-tabs{
+    margin: 0 auto;
+    width: 80%;
+}

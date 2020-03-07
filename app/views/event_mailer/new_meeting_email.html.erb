@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <style>
+    body {
+      font-family: Helvetica, arial, sans-serif;
+      font-size: 15px;
+      background: #f6f6f6;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <table style="text-align:center; background-color: lightgrey; width: 600px; margin-left: auto; margin-right: auto; padding: 40px; border: 1px solid #DDDDDD;">
+      <tbody>
+        <tr>
+          <td>
+            <table>
+              <tr>
+                <td style="text-align: center">
+                  <img src="https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/7346550/910/607/m1/fpnw/wm0/office-people-24-.jpg?1574409989&s=b9e653dfa2e949eb43647870378c8a57" alt="Comm Image" style="width:300px;">
+                  
+                  <h1 style="font-size: 22px; ">You've been invited to the following meeting</h1>
+                  
+                </td>
+              </tr>
+            </table>
+            <h3>Session Details</h3>
+            <p>Participants:</p>
+            <p><%=@meeting.users.pluck(:email).join(", ")%></p>
+            <table style="display:table; border-collapse: collapse; width: 100%; margin-bottom: 40px;">
+              <thead>
+               
+                <tr>
+                  <th style="text-align: left; font-size: 14px;">Date</th>
+                  <th style="text-align: left; font-size: 14px;">Name</th>
+                  <th style="text-align: left; font-size: 14px;">Starts At</th>
+                  <th style="text-align: left; font-size: 14px;">Ends At</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                <td><p><%= formatted_date(@meeting.date)%></p></td>
+                  <td><p><%= @meeting.name%></p></td>
+                  <td><p><%= formatted_time(@meeting.s_time) %></p></td>
+                  <td><p><%= formatted_time(@meeting.e_time)%></p></td>
+                </tr>
+              </tbody>
+            </table>
+            <p></p>
+            <p>To login to the site, just follow this link: <%= link_to "Login", new_user_session_url %>.</p>
+            <p>Thanks for joining and have a great day!</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

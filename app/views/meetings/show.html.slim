@@ -1,0 +1,48 @@
+
+
+<div class = "centered centered-show-meeting">
+<div class="card text-white bg-dark pd-40" style="max-width: 40rem;">
+  <div class="text-large">Meeting Details</div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <div class="card-text">
+      p
+        strong Name:
+        = ' '+@meeting.name
+      p
+        strong Date:
+        
+        = ' '+ formatted_date(@meeting.date)
+      p
+        strong Start:
+        
+        = ' '+formatted_time(@meeting.s_time)
+      p
+        strong End:
+      
+        = ' '+ formatted_time(@meeting.e_time) 
+      p
+        strong User:
+        br
+        - @meeting.users.each do |m|
+          td 
+          = m.email 
+          br 
+      p
+        strong Room:
+        
+        = ' '+ @meeting.room.name
+        p
+        strong Room Capacity:
+        = ' '+ @meeting.room.capacity.to_s
+
+      => link_to 'Edit', edit_meeting_path(@meeting), :class => 'btn btn-light'
+      '|
+      =< link_to 'Back', meetings_path, :class => 'btn btn-light'
+          
+    </div>
+  </div>
+</div>
+</div>
+
+
