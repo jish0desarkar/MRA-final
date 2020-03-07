@@ -25,7 +25,7 @@ class Meeting < ApplicationRecord
   end
   def start_time_must_be_in_future
     if date == Date.today
-      if start_time < Time.now
+      if s_time < Time.now
         errors.add(:s_time, "Time cannot be of the past")
       end
     end
