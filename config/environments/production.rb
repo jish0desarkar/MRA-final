@@ -127,8 +127,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   #replace with your own url
   config.action_mailer.perform_deliveries = true
-# SMTP settings for gmail
-config.action_mailer.smtp_settings = {
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
   :user_name            => 'jishnu@commutatus.com',
