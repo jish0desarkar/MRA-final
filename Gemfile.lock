@@ -251,7 +251,6 @@ DEPENDENCIES
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-erd
   sass-rails (>= 6)
-  select2-rails
   selenium-webdriver
   slim-rails
   spring
