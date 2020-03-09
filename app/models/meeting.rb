@@ -45,12 +45,17 @@ class Meeting < ApplicationRecord
   end
 
   def slot_unavailable
-    count = 0
-    count=Meeting.all.where("room_id= ? AND date= ? AND s_time<= ? AND e_time>= ?", room_id, date, s_time, e_time ).count
-    if(count==0)
+    
+    roomdatefind=Meeting.all.where("room_id= ? AND date= ?", room_id, date)
+    c=roomdatefind.where("s_time<= ? AND e_time>= ?", s_time, e_time ).count
+    d=roomdatefind.where("s_time>= ? AND e_time>= ?", s_time, e_time ).count
+    e=roomdatefind.where("s_time<= ? AND e_time<= ?", s_time, e_time ).count
+    f=roomdatefind.where("s_time>= ? AND e_time<= ?", s_time, e_time ).count
+    g=roomdatefind.where("e_time>= ? AND s_time<= ?", s_time, e_time ).count
+    if(c==0 && d==0 && e==0 && f==0 && g==0)
       
     else
-      puts count
+      puts c
       puts '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
       errors.add(:time, "Slot Booked")
       puts Meeting.all.where("room_id= ? AND date= ? AND s_time<= ? OR e_time>= ?", room_id, date, s_time, e_time ).pluck(:name)
