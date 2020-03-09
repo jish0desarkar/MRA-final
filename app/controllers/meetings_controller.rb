@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   helper :application
-  before_action :set_meeting, only: [:show, :update, :destroy, :delete_user]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy, :delete_user]
   before_action do 
     redirect_to new_user_session_path unless current_user
   end
@@ -67,9 +67,10 @@ class MeetingsController < ApplicationController
   # PATCH/PUT /meetings/1
   # PATCH/PUT /meetings/1.json
   def update
-    @meeting.users << current_user
+    
     respond_to do |format|
       if @meeting.update(meeting_params)
+        @meeting.users << current_user
         format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
         format.json { render :show, status: :ok, location: @meeting }
       else
