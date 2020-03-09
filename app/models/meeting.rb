@@ -7,6 +7,7 @@ class Meeting < ApplicationRecord
   validate :end_must_be_after_start
   validate :start_time_must_be_in_future
   validate :date_must_be_valid
+  validate :slot_unavailable
 
   def capacity_validate
 
@@ -24,7 +25,7 @@ class Meeting < ApplicationRecord
     end
   end
   def start_time_must_be_in_future
-    if date == Date.today
+    if date < Date.today
       if s_time < Time.now
         errors.add(:s_time, "Time cannot be of the past")
       end
@@ -35,4 +36,22 @@ class Meeting < ApplicationRecord
       errors.add(:date,"must be today or future")
     end
   end
+
+
+  def slot_unavailable
+    count = 0
+    count=Meeting.all.where("room_id= ? AND date= ? AND s_time<= ? OR e_time>= ?", room_id, date, s_time, e_time ).count
+    if(count==0)
+      
+    else
+      puts count
+      puts '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+      errors.add(:time, "Slot Booked")
+      puts Meeting.all.where("room_id= ? AND date= ? AND s_time<= ? OR e_time>= ?", room_id, date, s_time, e_time ).pluck(:name)
+
+    end
+
+  end
+
+
 end

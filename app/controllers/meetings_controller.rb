@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   helper :application
-  before_action :set_meeting, only: [:show, :edit, :update, :destroy, :delete_user]
+  before_action :set_meeting, only: [:show, :update, :destroy, :delete_user]
   before_action do 
     redirect_to new_user_session_path unless current_user
   end

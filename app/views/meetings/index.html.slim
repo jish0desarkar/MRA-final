@@ -41,7 +41,6 @@
                 br
           td = meeting.room.name
           td = link_to 'Show', meeting, :class => 'text-white text-decoration-none btn btn-dark'
-          td = link_to 'Edit', edit_meeting_path(meeting), :class => 'text-white text-decoration-none btn btn-dark'
           -if current_user.admin == true
             td = link_to 'Destroy', meeting, data: { confirm: 'Are you sure?' }, method: :delete, :class => 'text-white text-decoration-none btn btn-dark'
           td = link_to 'Opt Out', delete_user_path(meeting), :class => 'text-white text-decoration-none btn btn-dark'
@@ -79,7 +78,6 @@
                   br
             td = meeting.room.name
             td = link_to 'Show', meeting, :class => 'text-white text-decoration-none btn btn-dark'
-            td = link_to 'Edit', edit_meeting_path(meeting), :class => 'text-white text-decoration-none btn btn-dark'
             -if current_user.admin == true
               td = link_to 'Destroy', meeting, data: { confirm: 'Are you sure?' }, method: :delete, :class => 'text-white text-decoration-none btn btn-dark'
             td = link_to 'Opt Out', delete_user_path(meeting), :class => 'text-white text-decoration-none btn btn-dark'
@@ -115,7 +113,6 @@
                 br
           td = meeting.room.name
           td = link_to 'Show', meeting, :class => 'text-white text-decoration-none btn btn-dark'
-          td = link_to 'Edit', edit_meeting_path(meeting), :class => 'text-white text-decoration-none btn btn-dark'
           -if current_user.admin == true
             td = link_to 'Destroy', meeting, data: { confirm: 'Are you sure?' }, method: :delete, :class => 'text-white text-decoration-none btn btn-dark'
           td = link_to 'Opt Out', delete_user_path(meeting), :class => 'text-white text-decoration-none btn btn-dark'

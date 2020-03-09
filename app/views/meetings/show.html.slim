@@ -35,9 +35,6 @@
         p
         strong Room Capacity:
         = ' '+ @meeting.room.capacity.to_s
-
-      => link_to 'Edit', edit_meeting_path(@meeting), :class => 'btn btn-light'
-      '|
       =< link_to 'Back', meetings_path, :class => 'btn btn-light'
           
     </div>

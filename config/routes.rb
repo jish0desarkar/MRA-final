@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :rooms
   get '/all_meetings', to: 'meetings#all_meetings', as: 'all_meetings'
-  resources :meetings
+  resources :meetings, except: [:edit]
   root to: 'pages#home', as: 'home'
   devise_for :users
   get '/users', to: 'users#index', as: 'users'
