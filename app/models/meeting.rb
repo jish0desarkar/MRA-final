@@ -40,7 +40,7 @@ class Meeting < ApplicationRecord
 
   def slot_unavailable
     count = 0
-    count=Meeting.all.where("room_id= ? AND date= ? AND s_time<= ? OR e_time>= ?", room_id, date, s_time, e_time ).count
+    count=Meeting.all.where("room_id= ? AND date= ? AND s_time<= ? AND e_time>= ?", room_id, date, s_time, e_time ).count
     if(count==0)
       
     else
