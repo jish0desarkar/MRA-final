@@ -22,6 +22,7 @@ require('jquery')
 
 
 
+
 import $ from 'jquery'
 import 'select2'
 import 'select2/dist/css/select2.min.css'
@@ -32,3 +33,6 @@ $(document).on('turbolinks:load', function(){
     // Turn on js-selectable class so that it becomes SELCT 2 tag
     $('.js-selectable').select2();
   });
+
+
+  

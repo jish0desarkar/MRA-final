@@ -4,10 +4,12 @@
   <div class="card-body">
     <h5 class="card-title">Please sign in or Sign up to continue</h5>
     <div class="card-text">
-    button.btn.btn-secondary.btn-lg.btn-block
-     = link_to  "Sign in", new_user_session_path, :class => 'text-white text-decoration-none'
-    button.btn.btn-light.btn-lg.btn-block
-     = link_to  "Sign Up", new_user_registration_path , :class => 'text-dark text-decoration-none'
+    button.btn.btn-secondary
+     = link_to  "Sign in", new_user_session_path, :class => 'text-white text-decoration-none sign-in'
+    br
+    br
+    button.btn.btn-light
+     = link_to  "Sign Up", new_user_registration_path , :class => 'text-dark text-decoration-none sign-up'
     
     </div>
   </div>
