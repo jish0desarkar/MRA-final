@@ -8,6 +8,7 @@ class Meeting < ApplicationRecord
   validate :start_time_must_be_in_future
   validate :date_must_be_valid
   validate :slot_unavailable
+  validate :time_must_be_valid
 
   def capacity_validate
 
@@ -37,6 +38,11 @@ class Meeting < ApplicationRecord
     end
   end
 
+  def time_must_be_valid
+    if date < Time.now
+      errors.add(:e_time,"must be now or future")
+    end
+  end
 
   def slot_unavailable
     count = 0
